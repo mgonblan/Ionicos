@@ -1,0 +1,14 @@
+IDE .- Integrated Development Enviroment (VS Code)
+document .- "DOM" variable predefinida que representa el HTML
+que estamos viendo en el navegador
+css . Hoja de estilo
+html - Estructuram eitquetas ELEMENTOS
+js. Funcionalidad pagina /manipular DOM
+FASE ESTÁTICA  
+    1Diseño de la apariencia
+    2Programo con HTML/CSS la maqueta
+FASE DINÁMICA
+    1Diagrama de Actividad/Psueudocódigo
+    2Programo en js
+CALLBACK. Llamada por detrás
+LISTENER. Programamos el evento

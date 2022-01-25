@@ -5,15 +5,15 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>IMC</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='imc.css'>
+    <script src='imc.js'></script>
 </head>
 <!-- ENUNCIADO 
 EL ÍNDICE DE MASA CORPORAL ES UNA MEDIDA DE SALUD
 QUE INDICA LA RELACIÓN ENRTE EL PESO Y LA ESTATURA
 
 LA FÓRMULA ES:
-IMC = PESO (KG)/ESTATURA AL CUADRADO
+IMC = PESO (KG)/ESTATURA AL CUADRADO (METROS)
 
 < 16 DESNUTRIDO
 >=16 Y <18 DELGADO
@@ -21,13 +21,22 @@ IMC = PESO (KG)/ESTATURA AL CUADRADO
 >= 25 Y <31 SOBREPRESO
 >= 31 OBESIDAD
 
-HACED UNA APP QUE PERIITA CALCULAR EL IMC DE UNA PERSONA
+HACED UNA APP QUE PERMITA CALCULAR EL IMC DE UNA PERSONA
 INFORMANDO DE SU VALOR NUMÉRICO Y NOMINAL
 
 ADEMÁS, LA APP DEBE ACOMPAÑAR EL RESULTADO CON UNA IMAGEN
 PARA CADA CATEGORÍA 
 -->
 <body>
-    
+    <h1>CALCULO DEL IMC</h1>
+    <label for="peso">PESO (KG)</label>
+    <input type="text" size="5" name="peso" id="peso">
+    <label for="altura">ALTURA (M)</label>
+    <input type="text" size="5" name="altura" id="altura">
+    <input type="button" value="CALCULAR IMC" onclick="calcularIMC()">
+    <figure>
+        <img id="imagen_imc">
+        <figcaption id="leyenda"></figcaption>
+    </figure>
 </body>
 </html>

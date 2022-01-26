@@ -48,11 +48,11 @@ function mostrarIMC (imc_calculado)
     if (imc_calculado<16)
     {
         valor_nominal = "Desnutrido";
-        imagen.src = "/imagenes/desnutrido.jpg";
+        imagen.src = "imagenes/desnutrido.jpg";
     } else if ((imc_calculado>=16)&&(imc_calculado<18))
     {
         valor_nominal = "Delgado";
-        imagen.src = "/imagenes/delgado.jpg";
+        imagen.src = "imagenes/delgado.jpg";
 
     }else if ((imc_calculado>=18)&&(imc_calculado<25))
     {
@@ -62,12 +62,12 @@ function mostrarIMC (imc_calculado)
     }else if ((imc_calculado>=25)&&(imc_calculado<31))
     {
         valor_nominal = "Sobrepeso";
-        imagen.src = "/imagenes/sobrepeso.jpg";
+        imagen.src = "imagenes/sobrepeso.jpg";
 
     }else if ((imc_calculado>=31))
     {
         valor_nominal = "Obeso";
-        imagen.src = "/imagenes/obeso.gif";
+        imagen.src = "imagenes/obeso.gif";
     }
 
     leyenda.innerHTML = "Su IMC es " + imc_calculado +" está en el rango " + valor_nominal;

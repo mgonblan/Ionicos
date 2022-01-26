@@ -1,3 +1,5 @@
+
+
 function obtenerPeso ()
 {
     let peso;
@@ -22,6 +24,7 @@ function calcularvalorIMC (altura, peso)
     let imc;
 
         imc = peso / (altura*altura);
+        imc = imc.toFixed(2);//redondeo a dos decimales
 
     return imc;
 }
@@ -40,7 +43,7 @@ function calcularvalorIMC (altura, peso)
  */
 function mostrarIMC (imc_calculado)
 {
-    imc_calculado = imc_calculado.toFixed(2);//redondeo a dos decimales
+    
     let leyenda = document.getElementById("leyenda");
     let imagen = document.getElementById("imagen_imc");
     let valor_nominal;
@@ -73,6 +76,18 @@ function mostrarIMC (imc_calculado)
     leyenda.innerHTML = "Su IMC es " + imc_calculado +" está en el rango " + valor_nominal;
 
 }
+
+function mostrarHistoricoImc (imc_usuario)
+{
+    //CREAR UN ELEMENTO /DIV /P /LI
+    let caja_nueva = document.createElement("div");
+    caja_nueva.innerHTML = imc_usuario;
+    //AÑADIRLO AL DIV "PADRE" /PUNTO DE ANCLAJE / HOOK
+    let div_padre = document.getElementById("lista_imcs");
+    div_padre.appendChild(caja_nueva);
+}
+
+
 function calcularIMC ()
 {
     console.log("Ha tocado calcular");
@@ -81,8 +96,11 @@ function calcularIMC ()
     let imc_usuario = calcularvalorIMC (altura_usuario, peso_usuario);
     console.log("IMC = " + imc_usuario);
     mostrarIMC(imc_usuario);
+    mostrarHistoricoImc (imc_usuario);
+
     //obtenerpeso
     //obteneraltura
     //calcularvalorIMC
     //mostrar
 }
+

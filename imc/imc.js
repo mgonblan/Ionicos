@@ -1,4 +1,22 @@
+let lista_resultados;
 
+function inicilizar ()
+{
+    lista_resultados =  new Array();// creo un array vacío
+    console.log("Página cargada ");
+}
+this.onload = inicilizar;
+
+class Imc {
+    //peso, altura
+    //FUNCIÓN/MÉTODO-> mecaniso previsto para crear objetos(variables de una clase)
+    //MÉTODO (Forma parte del API estándar dada por JS - Bernardo -) vs Función (hecha por ti)
+    constructor (peso, altura){
+        //this en el ámbito del constructor representa el objeto de nueva creación - en ciernes-
+        this.peso = peso;
+        this.letra = letra;
+    }
+}
 
 function obtenerPeso ()
 {
@@ -97,6 +115,7 @@ function calcularIMC ()
     console.log("IMC = " + imc_usuario);
     mostrarIMC(imc_usuario);
     mostrarHistoricoImc (imc_usuario);
+    lista_resultados.push(imc_usuario);
 
     //obtenerpeso
     //obteneraltura
@@ -105,7 +124,7 @@ function calcularIMC ()
 }
 
 function limpiarTodo(){
-   location.reload();//recargo la página actual
+   location.reload();
 
 }
 

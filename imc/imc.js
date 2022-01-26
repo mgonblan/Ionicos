@@ -104,3 +104,22 @@ function calcularIMC ()
     //mostrar
 }
 
+function limpiarTodo(){
+   location.reload();//recargo la página actual
+
+}
+
+
+function limpiarTodoAnA(){
+    //let p_num = document.getElementById('p-num-result');
+    //let p_char = document.getElementById('p-char-result');
+    let img_element =document.getElementById('imagen_imc');
+    //let listResult = document.getElementById('list-result');
+    let div_padre = document.getElementById("lista_imcs");
+
+    //p_num.innerHTML ='';
+    //p_char.innerHTML ='';
+    img_element.src ='';
+    div_padre.innerHTML='';
+
+}

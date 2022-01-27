@@ -1,5 +1,12 @@
 let lista_resultados;
 
+//id construyendo un array de objetos IMC (no solo el número)
+//usad ese array para mostrarHistoricoImc
+//añadir a esa lista el valor nominal y la imagen
+//permitir ordenar esa lista por el valor nominal y por el numérico
+
+
+
 function inicilizar ()
 {
     lista_resultados =  new Array();// creo un array vacío
@@ -14,7 +21,22 @@ class Imc {
     constructor (peso, altura){
         //this en el ámbito del constructor representa el objeto de nueva creación - en ciernes-
         this.peso = peso;
-        this.letra = letra;
+        this.altura = altura;
+    }
+
+    calcularValor () 
+    {
+        let imc;
+            
+            imc = this.peso/(this.altura*this.altura);
+            imc = imc.toFixed(2);
+
+        return imc;
+    }
+
+    mostrarPorConsola ()
+    {
+
     }
 }
 
@@ -116,6 +138,10 @@ function calcularIMC ()
     mostrarIMC(imc_usuario);
     mostrarHistoricoImc (imc_usuario);
     lista_resultados.push(imc_usuario);
+
+    //1 creo un objeto imc
+    let objeto_imc = new Imc (peso_usuario, altura_usuario);
+    let imc_usuario_clase = objeto_imc.calcularValor();
 
     //obtenerpeso
     //obteneraltura

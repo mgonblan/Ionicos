@@ -22,8 +22,40 @@ class Imc {
         //this en el ámbito del constructor representa el objeto de nueva creación - en ciernes-
         this.peso = peso;
         this.altura = altura;
+        this.imc_numerico = this.calcularValor();
+        this.imc_nominal = this.obtenerIMCNominal(this.imc_numerico);
+        this.imagen = "imagenes/" +this.imc_nominal + ".jpg";
+        
     }
 
+
+    obtenerIMCNominal(imc_calculado)
+    {
+        
+        let valor_nominal;
+    
+        if (imc_calculado<16)
+        {
+            valor_nominal = "desnutrido";
+        } else if ((imc_calculado>=16)&&(imc_calculado<18))
+        {
+            valor_nominal = "delgado";
+    
+        }else if ((imc_calculado>=18)&&(imc_calculado<25))
+        {
+            valor_nominal = "ideal";
+    
+        }else if ((imc_calculado>=25)&&(imc_calculado<31))
+        {
+            valor_nominal = "sobrepeso";
+        }else if ((imc_calculado>=31))
+        {
+            valor_nominal = "obeso";
+        }
+
+        return valor_nominal;
+
+    }
     calcularValor () 
     {
         let imc;
@@ -100,7 +132,7 @@ function mostrarIMC (imc_calculado)
     }else if ((imc_calculado>=18)&&(imc_calculado<25))
     {
         valor_nominal = "Ideal";
-        imagen.src = "imagenes/ideal.png";
+        imagen.src = "imagenes/ideal.jpg";
 
     }else if ((imc_calculado>=25)&&(imc_calculado<31))
     {
@@ -110,12 +142,14 @@ function mostrarIMC (imc_calculado)
     }else if ((imc_calculado>=31))
     {
         valor_nominal = "Obeso";
-        imagen.src = "imagenes/obeso.gif";
+        imagen.src = "imagenes/obeso.jpg";
     }
 
     leyenda.innerHTML = "Su IMC es " + imc_calculado +" está en el rango " + valor_nominal;
 
 }
+
+
 
 function mostrarHistoricoImc (imc_usuario)
 {
@@ -127,21 +161,61 @@ function mostrarHistoricoImc (imc_usuario)
     div_padre.appendChild(caja_nueva);
 }
 
+function crearFila (objeto_imc)
+{
+    let fila;
+    let columna_imc_numerico;
+    let columna_imc_nominal;
+    let columna_img;
+    let elemento_img;
+
+        fila = document.createElement("tr");
+        columna_imc_numerico = document.createElement("td");
+        columna_imc_nominal = document.createElement("td");
+        columna_img = document.createElement("td");
+        elemento_img = document.createElement("img");
+
+        columna_imc_numerico.innerHTML = objeto_imc.imc_numerico;
+        columna_imc_nominal.innerHTML = objeto_imc.imc_nominal;
+        
+        elemento_img.src = objeto_imc.imagen;
+        columna_img.appendChild(elemento_img);
+        
+        fila.appendChild(columna_imc_numerico);
+        fila.appendChild(columna_imc_nominal);
+        fila.appendChild(columna_img);
+
+    return fila;
+}
 
 function calcularIMC ()
 {
     console.log("Ha tocado calcular");
     let peso_usuario = obtenerPeso();
     let altura_usuario = obtenerAltura();
-    let imc_usuario = calcularvalorIMC (altura_usuario, peso_usuario);
+    //1 creo un objeto imc
+    let objeto_imc = new Imc (peso_usuario, altura_usuario);
+    //2 añado a la lista
+    lista_resultados.push(objeto_imc);
+    
+    let fila_nueva = crearFila (objeto_imc);
+    let tabla_resultados = document.getElementById("tabla_imcs");
+    tabla_resultados.appendChild(fila_nueva);
+
+    mostrarIMC(objeto_imc.imc_numerico);
+    //TODO: ORDENAR
+
+    
+    
+    /*let imc_usuario = calcularvalorIMC (altura_usuario, peso_usuario);
     console.log("IMC = " + imc_usuario);
     mostrarIMC(imc_usuario);
     mostrarHistoricoImc (imc_usuario);
-    lista_resultados.push(imc_usuario);
+    lista_resultados.push(imc_usuario);*/
 
-    //1 creo un objeto imc
-    let objeto_imc = new Imc (peso_usuario, altura_usuario);
-    let imc_usuario_clase = objeto_imc.calcularValor();
+    
+
+    //let imc_usuario_clase = objeto_imc.calcularValor();
 
     //obtenerpeso
     //obteneraltura

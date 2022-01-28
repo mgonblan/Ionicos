@@ -215,12 +215,24 @@ function obtenerObesos (lista_imcs)
             if (lista_imcs[indice].imc_numerico>=31)
             {
                 lista_obesos.push(lista_imcs[indice]); //lo añado a la lista
-            }
-               
+            }             
         }
-
     return lista_obesos;
 }
+
+function obtenerObesos2 (lista_imcs)
+{
+    let lista_obesos = new Array();
+
+    //const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+    //const result = words.filter(word => word.length > 6);
+        lista_obesos = lista_imcs.filter ( imc => imc.imc_numerico >=31);
+
+       
+    return lista_obesos;
+}
+
+
 
 function obtenerMedia2 (lista_imcs)
 {
@@ -253,7 +265,16 @@ function calcularIMC ()
     //2 añado a la lista
     lista_resultados.push(objeto_imc);
     let media = obtenerMedia(lista_resultados);
-    console.log("MEDIA = " + media);
+    let media2 = obtenerMedia2(lista_resultados);
+    console.log("MEDIA 1forma = " + media);
+    console.log("MEDIA  2forma = " + media2);
+    let lista_obesos = obtenerObesos(lista_resultados);
+    let lista_obesos2 = obtenerObesos2(lista_resultados);
+    console.log("Lista OBESOS FORMA 1 = ");
+    lista_obesos.forEach(imc => {console.log(imc.imc_numerico + " " + imc.imc_nominal);})
+    console.log("Lista OBESOS FORMA 2 = ");
+    lista_obesos2.forEach(imc => {console.log(imc.imc_numerico + " " + imc.imc_nominal);})
+    
 
     
     let fila_nueva = crearFila (objeto_imc);
@@ -262,12 +283,11 @@ function calcularIMC ()
 
     mostrarIMC(objeto_imc.imc_numerico);
     //TODO: ORDENAR
-    //TODO: MOSTRAR, POR CADA IMC QUE SE CALCULA, LA MEDIA
-    //DE LOS IMC'S NUMERICOS ACUMULADAS
+    //TODO: MOSTRAR en el HTML EL MÁS ALTO Y LA MEDIA
 
 
     
-    
+    //CÁLCULO SIN CLASE
     /*let imc_usuario = calcularvalorIMC (altura_usuario, peso_usuario);
     console.log("IMC = " + imc_usuario);
     mostrarIMC(imc_usuario);

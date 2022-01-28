@@ -1,4 +1,5 @@
 let lista_resultados;
+let masalto;
 
 //id construyendo un array de objetos IMC (no solo el número)
 //usad ese array para mostrarHistoricoImc
@@ -10,6 +11,7 @@ let lista_resultados;
 function inicilizar ()
 {
     lista_resultados =  new Array();// creo un array vacío
+    masalto = 0;
     console.log("Página cargada ");
 }
 this.onload = inicilizar;
@@ -203,6 +205,23 @@ function obtenerMedia (lista_imcs)
     return media;
 }
 
+function obtenerObesos (lista_imcs)
+{
+    let lista_obesos = new Array();
+
+        for (let indice = 0; indice<lista_imcs.length; indice++)
+        {
+            //si el imc_numerico del imc en curso es Obeso
+            if (lista_imcs[indice].imc_numerico>=31)
+            {
+                lista_obesos.push(lista_imcs[indice]); //lo añado a la lista
+            }
+               
+        }
+
+    return lista_obesos;
+}
+
 function obtenerMedia2 (lista_imcs)
 {
     let media = 0;
@@ -222,12 +241,20 @@ function calcularIMC ()
     console.log("Ha tocado calcular");
     let peso_usuario = obtenerPeso();
     let altura_usuario = obtenerAltura();
+    //LORENA STYLE :
+    if (altura_usuario>masalto)
+    {
+        masalto=altura_usuario;
+    }
+    console.log("masalto = " + masalto);
+
     //1 creo un objeto imc
     let objeto_imc = new Imc (peso_usuario, altura_usuario);
     //2 añado a la lista
     lista_resultados.push(objeto_imc);
     let media = obtenerMedia(lista_resultados);
     console.log("MEDIA = " + media);
+
     
     let fila_nueva = crearFila (objeto_imc);
     let tabla_resultados = document.getElementById("tabla_imcs");

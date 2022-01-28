@@ -61,7 +61,7 @@ class Imc {
         let imc;
             
             imc = this.peso/(this.altura*this.altura);
-            imc = imc.toFixed(2);
+            imc = parseFloat (imc.toFixed(2))   ;
 
         return imc;
     }
@@ -188,6 +188,35 @@ function crearFila (objeto_imc)
     return fila;
 }
 
+function obtenerMedia (lista_imcs)
+{
+    let media = 0;
+    let suma = 0;
+
+        for (let indice = 0; indice<lista_imcs.length; indice++)
+        {
+            suma = suma + lista_imcs[indice].imc_numerico;
+        }
+
+        media = suma / lista_imcs.length;
+
+    return media;
+}
+
+function obtenerMedia2 (lista_imcs)
+{
+    let media = 0;
+    let suma = 0;
+
+    //funciones anónimas / funciones de flecha / arrow functions - programación funcional - parámetros son funciones
+        lista_imcs.forEach(imc => {
+            suma += imc.imc_numerico;
+        });
+        media = suma / lista_imcs.length;
+
+    return media;
+}
+
 function calcularIMC ()
 {
     console.log("Ha tocado calcular");
@@ -197,6 +226,8 @@ function calcularIMC ()
     let objeto_imc = new Imc (peso_usuario, altura_usuario);
     //2 añado a la lista
     lista_resultados.push(objeto_imc);
+    let media = obtenerMedia(lista_resultados);
+    console.log("MEDIA = " + media);
     
     let fila_nueva = crearFila (objeto_imc);
     let tabla_resultados = document.getElementById("tabla_imcs");
@@ -204,6 +235,9 @@ function calcularIMC ()
 
     mostrarIMC(objeto_imc.imc_numerico);
     //TODO: ORDENAR
+    //TODO: MOSTRAR, POR CADA IMC QUE SE CALCULA, LA MEDIA
+    //DE LOS IMC'S NUMERICOS ACUMULADAS
+
 
     
     

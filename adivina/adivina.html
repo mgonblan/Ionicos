@@ -25,24 +25,60 @@
 
 
 
-        function adivinaQueHace() {
-            var bd = true;
+        function esPalindromo() {
+            var espalindromo = true;
             var cad = document.getElementById("palabra").value;
             var i = 0;
             var j = cad.length - 1;
 
-            while ((i < j) && (bd)) {
+            while ((i < j) && (espalindromo)) {
                 if (cad.charAt(i) == cad.charAt(j)) {
-                    bd = true;
+                    espalindromo = true;
                 } else {
-                    bd = false;
+                    espalindromo = false;
                 }
                 i++;
                 j--;
             }
 
-   console.log ("bd = " + bd);
-            return bd;
+            console.log("bd = " + espalindromo);
+            return espalindromo;
+        }
+        function invertir(cadena) {
+            var x = cadena.length-1;
+            var cadenaInvertida = "";
+
+            while (x >= 0) {
+                cadenaInvertida = cadenaInvertida + cadena.charAt(x);
+                x--;
+            }
+            return cadenaInvertida;
+        }
+
+        function esPalindromo2() {
+            var espalindromo = true;
+            var cad = document.getElementById("palabra").value;
+
+
+            //DAMOS LA VUELTA A CAD
+                var cad1 = invertir(cad);
+                console.log(`cadena al revés ${cad1}`);
+                /* if (cad==cad1)
+                {
+                    esPalindromo = true;
+                } else {
+                    esPalindromo = false;
+                } */
+                esPalindromo = (cad==cad1);
+            //CAD1
+            //SI CAD! == CAD
+            //VERDADERO
+
+            return espalindromo;
+        }
+
+        function esPalindromoRec() {
+
         }
 
     </script>
@@ -51,7 +87,8 @@
 <body>
     <label for="palabra">PALABRA</label>
     <input type="text" id="palabra">
-    <button onclick="adivinaQueHace();">Empieza</button>
+   <!--  <button onclick="esPalindromo();">Empieza</button> -->
+    <button onclick="esPalindromo2();">Empieza</button>
     <p id="p1"></p>
 </body>
 

@@ -8,10 +8,12 @@ let masalto;
 
 
 
+
 function inicilizar() {
     lista_resultados = new Array();// creo un array vacío
     masalto = 0;
     console.log("Página cargada ");
+    document.getElementById ("peso").value = 5;
 }
 this.onload = inicilizar;
 

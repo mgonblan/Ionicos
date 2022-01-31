@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Calculador de Índice de Masa Corporal</title>
+    
+    <link rel="stylesheet" href="IMC.css">
+    <script src="IMC.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>CALCULADOR DE IMC</h1>
+    
+    </header>
+
+    <Section id="Enunciado">
+
+        Ingresa los datos para saber si tienes algunos kilos de más o te hace falta comer doble ración.
+
+    </Section><br><br>
+
+    <form id="Formulario">
+
+        <label for="Nombre">Ingresa tu nombre: </label>
+        <input type="text" name="Nombre" id="Nombre" placeholder="Nombre de user" ><br><br>
+        <label for="Peso">Ingresa tu peso: </label>
+        <input type="number" name="Peso" id="Peso" placeholder="Kg"> Kg <br><br>
+        <label for="Altura">Ingresa tu altura: </label>
+        <input type="number" name="Altura" id="Altura" placeholder="m"> m <br><br>
+        <label for="Sexo">Ingresa tu sexo: </label>
+       
+        <select name="Sexo" id="Sexo">
+           
+            <option value=""></option>
+            <option value="masculino">M</option>
+            <option value="femenino">F</option>
+       
+        </select><br><br>
+
+    </form>
+
+    <section>
+        <input type="button" name="Botón" id="Calcular" value="CALCULAR" onclick="calcular_IMC()">
+    </section>
+    
+    <section>
+
+            <figure>
+               
+                <div id="DivisiónImagen">
+
+                    <img src="Imagenes/Imc.png" id="ImagenFija">
+                    <img id="ImagenEgresada">
+
+                </div>
+                
+                <figcaption id="Respuesta"></figcaption>
+            
+            </figure>
+
+    <section>
+
+    <Section id="Tabla">
+
+        <h4>LISTA DE RESULTADOS</h4>
+        
+        <table>
+
+            <thead id="CabeceraTabla">
+                
+                <tr id="CategoríasTabla">                    
+
+                    <td id="NombreTabla">NOMBRE</td>
+                    <td id="NumeroTabla">IMC</td>
+                    <td id="RespuestaTabla">ESTADO</td>
+                    <td id=ImagenTabla>IMAGEN</td>        
+                
+                </tr>
+            
+            </thead>
+           
+            <tbody id="ResultadosTabla"></tbody>
+        
+        </table>
+
+    </Section><br><br>
+
+    <section id="botónOrdenar">
+
+        <input type="button" id="BotónOrdenar"  value="ORDENAR IMC" onclick="ordenarIMC()">
+
+    </section><br>
+
+
+    <Section id="BorrarHistorial">
+
+        <input type="button" id="BotónHistorial" value="BORRAR HISTORIAL" onclick="vaciarHistorial()">
+
+    </Section>
+    
+</body>
+</html>

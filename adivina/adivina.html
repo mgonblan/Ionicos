@@ -77,7 +77,15 @@
             return espalindromo;
         }
 
-        function esPalindromoRec() {
+        //SOLUCIÓN RECURSIVA
+        let procesar = (palabra, i, j) => i < j ? palabra[i] == palabra[j] ? procesar(palabra, i + 1, j - 1) : false : true;
+
+        function palabraSimetricaRec() {
+            var palabra = document.getElementById("palabra").value;
+
+            let r = procesar(palabra, 0, palabra.length - 1);
+
+            console.log(`Palindromo = ${r}`);
 
         }
 

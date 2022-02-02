@@ -1,0 +1,7 @@
+<h1>{{titulo}}</h1>
+    <div id="botondni">
+        <label for="dni">DNI</label>
+        <input type="text" [(ngModel)]="numero" id="dni" name="dni">
+        <input type="button" value="CALCULAR LETRA" (click)="calcularLetraDni()">
+    </div>    
+<h2 id="resultado">{{letra}}</h2>

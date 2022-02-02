@@ -1,0 +1,14 @@
+
+<h1>{{titulo}}</h1>
+<!-- <label for="user_name">{{label_nombre}}</label>
+<input type="text" [(ngModel)]="nombre" id="user_name" name="user_name" required>
+ -->
+<label for="weight">{{label_peso}}</label>
+<input type="text" [(ngModel)]="oimc.peso" id="weight" name="weight" required>
+
+<label for="height">{{label_altura}}</label>
+<input type="text" [(ngModel)]="oimc.altura" id="height" name="height" required>
+
+<button type="submit" (click)="calculateIMC()">CALCULAR</button>
+<p *ngIf="calculado">Su IMC es {{oimc.numerico}}</p>
+<img *ngIf="calculado" src={{oimc.foto}}>

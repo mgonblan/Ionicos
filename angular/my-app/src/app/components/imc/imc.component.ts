@@ -39,6 +39,18 @@ export class ImcComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    console.log("iniciando");
+    let nveces:number=0;
+    //localStorage.setItem("usuario", "vale");
+    let sveces:string|null= sessionStorage.getItem("nveces");
+    if (sveces!=null)
+    {
+      //hay datos
+        nveces =+ sveces;
+        nveces++; 
+    }
+    sessionStorage.setItem("nveces", nveces+"");
+    console.log(`Ha entrado ${nveces} veces`);
   }
 
 clonarImc (imc_viejo:Imc):Imc
@@ -102,6 +114,12 @@ clonarImc (imc_viejo:Imc):Imc
     this.mostrarArray(this.array_imc);
 
     this.calculado=true;
+  }
+
+  ngOnDestroy()
+  {
+    console.log("saliendo del componente");
+    localStorage.setItem("nombre", "vale");
   }
 
 

@@ -6,6 +6,7 @@ export class Imc {
     numerico:number;
     foto:string;
     nominal:TipoImc;
+    lectura:string;//para que tenga el tipoIMC como string
    
 
     constructor(){
@@ -14,6 +15,7 @@ export class Imc {
         this.numerico=0;
         this.foto = "";
         this.nominal = TipoImc.DESNUTRIDO;
+        this.lectura = "";
     }
 
 }

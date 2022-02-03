@@ -12,3 +12,23 @@
 <button type="submit" (click)="calculateIMC()">CALCULAR</button>
 <p *ngIf="calculado">Su IMC es {{oimc.numerico}}</p>
 <img *ngIf="calculado" src={{oimc.foto}}>
+<div *ngIf="array_imc && array_imc.length>0">
+    <table>
+        <thead>
+            <th>PESO</th>
+            <th>ALTURA</th>
+            <th>IMC NUM</th>
+            <th>LECTURA</th>
+            <th>IMAGEN</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let itemimc of array_imc">
+                <td>{{itemimc.peso}}</td>
+                <td>{{itemimc.altura}}</td>
+                <td>{{itemimc.numerico}}</td>
+                <td>{{itemimc.lectura}}</td>
+                <td><img src={{itemimc.foto}}></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

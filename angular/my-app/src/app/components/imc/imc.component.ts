@@ -74,7 +74,7 @@ export class ImcComponent implements OnInit {
   {
     let array_guardado:Array<Imc>= new Array<Imc>();
     let string_datos:string|null="";
-
+//TODO: ORDENAR GRÁFICAMENTE por IMC NUMÉRICO
       string_datos = localStorage.getItem('lista_imcs');
       if (string_datos!=null)
       {
@@ -89,6 +89,54 @@ export class ImcComponent implements OnInit {
     this.ultima_vez = this.obtenerYActualizarFechaUltimaVez();
     this.array_imc = this.cargarListaImcs();
     
+  }
+
+  //TODO: usar map sobre el array original
+  //para obtener un nuevo array sumando a todos 1k
+  sumarUnkilo(imc_normal: Array<Imc>): Array<Imc> {
+    let arrayUnkilo: Array<Imc> = new Array<Imc>();
+
+//1ºforma
+    arrayUnkilo = imc_normal.map(item => {
+
+      let imc = this.clonarImc(item);
+      imc.peso++;
+      
+      return imc;  
+    });
+//2ºforma
+   /* arrayUnkilo = imc_normal.map(item => {
+      
+      item.peso++;
+      
+      return item;  
+    });*/
+
+    
+    return arrayUnkilo;
+
+
+  }
+
+  ordendarPorImc()
+  {
+    console.log("ordenando...");
+    this.array_imc.sort(
+      (a:Imc, b:Imc) => {
+        let resultado:number=0;
+            resultado=a.numerico-b.numerico;//ASCENDENTE
+            //resultado=b.numerico-a.numerico;//DESCENDENTE
+       /*  if (a.numerico>b.numerico)
+        {resultado=1;
+        } else if (a.numerico<b.numerico)
+        {
+          resultado=-1
+        } else {
+          resultado=0;} */
+
+        return resultado;
+      }
+    );
   }
 
 clonarImc (imc_viejo:Imc):Imc
@@ -159,6 +207,9 @@ clonarImc (imc_viejo:Imc):Imc
     /* console.log("lista imcs = " +lista_imcs_json);
     let array_nuevo = JSON.parse(lista_imcs_json);
     console.log("Altura 1 " + array_nuevo[0].altura); */
+    let array1kgmas = this.sumarUnkilo(this.array_imc);
+    console.log("ARRAY + 1KG");
+    this.mostrarArray(array1kgmas);
 
     this.calculado=true;
   }

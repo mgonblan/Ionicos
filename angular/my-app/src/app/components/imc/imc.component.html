@@ -19,6 +19,7 @@
 <p *ngIf="calculado">Su IMC es {{oimc.numerico}}</p>
 <img *ngIf="calculado" src={{oimc.foto}}>
 <div *ngIf="array_imc && array_imc.length>0">
+    
     <table>
         <thead>
             <th>PESO</th>
@@ -37,4 +38,5 @@
             </tr>
         </tbody>
     </table>
+    <button (click)="ordendarPorImc()">ORDENAR</button>
 </div>

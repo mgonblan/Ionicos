@@ -59,13 +59,14 @@ export class ImcComponent implements OnInit {
       ultimavez= localStorage.getItem("ultimavez");
       if (ultimavez==null)
       {
-        //no hay datos
+        //no hay datos: la fecha última es hoy
         ultimavez = new Date().toString();
       } 
     
+      //guardo el momento actual como fecha última (para la próxima)
       momentoactual=new Date().toString();
       localStorage.setItem("ultimavez",momentoactual);
-      //console.log(`Ha entrado ${nveces} veces`);
+      
     return ultimavez;
   }
   ngOnInit(): void {
@@ -133,6 +134,14 @@ clonarImc (imc_viejo:Imc):Imc
     let imc_nuevo:Imc = this.clonarImc(this.oimc);
     this.array_imc.push(imc_nuevo);
     this.mostrarArray(this.array_imc);
+
+    //TODO: guardar el array en el localStorage
+    //de modo que cuando se meta en la página
+    //se cargue la tabla con la información almacenada
+    let lista_imcs_json = JSON.stringify(this.array_imc);
+    console.log("lista imcs = " +lista_imcs_json);
+    let array_nuevo = JSON.parse(lista_imcs_json);
+    console.log("Altura 1 " + array_nuevo[0].altura);
 
     this.calculado=true;
   }

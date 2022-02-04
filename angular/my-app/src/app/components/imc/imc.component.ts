@@ -14,13 +14,13 @@ export class ImcComponent implements OnInit {
   label_nombre:string;
   label_peso:string;
   label_altura:string;
-  //nombre:string;
-  /* peso:number;
-  altura:number;
-  imc_numerico:number; */
+ 
   oimc:Imc;
   calculado:boolean;
   array_imc:Array<Imc>;
+  ultima_vez:string;
+  nveces:number;
+  
 
   constructor() {
     this.titulo = "CÁLCULO DEL IMC";
@@ -28,29 +28,50 @@ export class ImcComponent implements OnInit {
     this.label_peso="Peso";
     this.label_altura="Altura";
     this.oimc = new Imc();
-    //this.nombre="";
-    /* this.peso=0;
-    this.altura=0;
-    this.imc_numerico = 0; */
+    this.nveces=0;
     this.calculado=false;
     this.array_imc=new Array<Imc>();
-    //TODO: tengo que ir llenando este array con los resultados
-    //e ir mostrando la lista por consola (no en la plantilla)
-
+    this.ultima_vez = new Date().toString();
+   
   }
-  ngOnInit(): void {
-    console.log("iniciando");
+
+  obtenerYActualizarNveces () : number
+  {
     let nveces:number=0;
     //localStorage.setItem("usuario", "vale");
-    let sveces:string|null= sessionStorage.getItem("nveces");
+    let sveces:string|null= localStorage.getItem("nveces");
     if (sveces!=null)
     {
       //hay datos
         nveces =+ sveces;
         nveces++; 
     }
-    sessionStorage.setItem("nveces", nveces+"");
+    localStorage.setItem("nveces", nveces+"");
     console.log(`Ha entrado ${nveces} veces`);
+    return nveces;
+  }
+
+  obtenerYActualizarFechaUltimaVez () : string
+  {
+    let ultimavez:string|null="";
+    let momentoactual:string="";
+      //localStorage.setItem("usuario", "vale");
+      ultimavez= localStorage.getItem("ultimavez");
+      if (ultimavez==null)
+      {
+        //no hay datos
+        ultimavez = new Date().toString();
+      } 
+    
+      momentoactual=new Date().toString();
+      localStorage.setItem("ultimavez",momentoactual);
+      //console.log(`Ha entrado ${nveces} veces`);
+    return ultimavez;
+  }
+  ngOnInit(): void {
+    console.log("iniciando");
+    this.nveces = this.obtenerYActualizarNveces();
+    this.ultima_vez = this.obtenerYActualizarFechaUltimaVez();
   }
 
 clonarImc (imc_viejo:Imc):Imc
@@ -116,11 +137,6 @@ clonarImc (imc_viejo:Imc):Imc
     this.calculado=true;
   }
 
-  ngOnDestroy()
-  {
-    console.log("saliendo del componente");
-    localStorage.setItem("nombre", "vale");
-  }
 
 
 }

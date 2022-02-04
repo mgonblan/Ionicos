@@ -69,10 +69,26 @@ export class ImcComponent implements OnInit {
       
     return ultimavez;
   }
+
+  cargarListaImcs ():Array<Imc>
+  {
+    let array_guardado:Array<Imc>= new Array<Imc>();
+    let string_datos:string|null="";
+
+      string_datos = localStorage.getItem('lista_imcs');
+      if (string_datos!=null)
+      {
+        array_guardado = JSON.parse(string_datos);
+      }
+    return array_guardado;
+  }
+
   ngOnInit(): void {
     console.log("iniciando");
     this.nveces = this.obtenerYActualizarNveces();
     this.ultima_vez = this.obtenerYActualizarFechaUltimaVez();
+    this.array_imc = this.cargarListaImcs();
+    
   }
 
 clonarImc (imc_viejo:Imc):Imc
@@ -139,9 +155,10 @@ clonarImc (imc_viejo:Imc):Imc
     //de modo que cuando se meta en la página
     //se cargue la tabla con la información almacenada
     let lista_imcs_json = JSON.stringify(this.array_imc);
-    console.log("lista imcs = " +lista_imcs_json);
+    localStorage.setItem('lista_imcs',lista_imcs_json );
+    /* console.log("lista imcs = " +lista_imcs_json);
     let array_nuevo = JSON.parse(lista_imcs_json);
-    console.log("Altura 1 " + array_nuevo[0].altura);
+    console.log("Altura 1 " + array_nuevo[0].altura); */
 
     this.calculado=true;
   }

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DniComponent } from './components/dni/dni.component';
 import { ImcComponent } from './components/imc/imc.component';
+import { LayoutModule } from './layout/layout.module';
 
 //ng g c components/dni
 @NgModule({
@@ -17,7 +18,8 @@ import { ImcComponent } from './components/imc/imc.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

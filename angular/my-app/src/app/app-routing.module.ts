@@ -8,7 +8,7 @@ import { ImcComponent } from './components/imc/imc.component';
 const routes: Routes = [
   {path:"dni", component: DniComponent},
   //{path:"", component: DniComponent},
-  {path:"", component: ImcComponent}
+  {path:"imc", component: ImcComponent}
 ];
 
 @NgModule({

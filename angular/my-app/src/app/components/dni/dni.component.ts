@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dni',
@@ -15,7 +16,7 @@ export class DniComponent implements OnInit {
   static readonly SECUENCIA_LETRAS_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
 
   //FUNCIONES O MÉTODOS
-  constructor() {
+  constructor( public router: Router) {
     this.titulo = "CALCULE SU LETRA DEL DNI";
     this.numero =null;
     this.letra="";
@@ -40,5 +41,7 @@ export class DniComponent implements OnInit {
        
     }
   }
+
+ 
 
 }

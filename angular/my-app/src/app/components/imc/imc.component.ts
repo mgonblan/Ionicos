@@ -214,6 +214,7 @@ clonarImc (imc_viejo:Imc):Imc
     this.calculado=true;
   }
 
+  
 
 
 }

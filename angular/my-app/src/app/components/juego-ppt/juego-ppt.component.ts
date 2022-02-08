@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MarcadorComponent } from '../marcador/marcador.component';
 
 @Component({
   selector: 'app-juego-ppt',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class JuegoPptComponent implements OnInit {
 
   seleccionado?:boolean;//para controlar si el usuario eligió jugada o no
+  
 readonly FOTO_PIEDRA = "assets/imagenes/rock.png";
 readonly FOTO_PAPEL = "assets/imagenes/paper.png";
 readonly FOTO_TIJERA = "assets/imagenes/scissors.png";
@@ -33,15 +35,24 @@ readonly FOTO_TIJERA = "assets/imagenes/scissors.png";
     [-1, 1, 0]
 ];
 
-
+  @ViewChild (MarcadorComponent) marcador?:MarcadorComponent;
 
 
   constructor() { 
     this.seleccionado=false;
+    console.log("constructor JuegoPptComponent");
+   
   }
 
   ngOnInit(): void {
-  
+    console.log("ngOnInit JuegoPptComponent");
+    
+  }
+
+  ngAfterViewInit ()
+  {
+    console.log("Se ha cargado la vista hija");
+    //this.marcador?.ponerEmpateA10();
   }
 
   selectPlay(play:number) {
@@ -81,9 +92,16 @@ readonly FOTO_TIJERA = "assets/imagenes/scissors.png";
 
 }
 
+desmarcarOpcionUsuario ()
+{
+  //TODO: eliminar el marcado
+}
+
  getComputerPlay():number {
     return Math.floor(Math.random() * 3);
 }
+
+
 
  playNow() {
 
@@ -103,18 +121,24 @@ readonly FOTO_TIJERA = "assets/imagenes/scissors.png";
       img_computer.setAttribute("alt", this.img_botones[computer]);}
   
       console.log(result);//MOSTRANDO EL RESULTADO
+      this.marcador?.actualizarMarcador(result);
+      
       //DE FORMA IMPLÍCITA
       // 1 GANA EL JUGADOR
       // 0 ES EMPATE
+      // -1 GANA EL PC
       //TODO: AÑADIR UN MARCARDOR VISUAL
       //QUE SE ACTUALICE POR CADA PARTIDA
       //Y MUESTREL EL RESULTADO DEL JUEGO
-      
-      // -1 GANA EL PC
+
+      this.seleccionado=false;
   
       localStorage.removeItem("selected");
     }
     
 }
+
+
+
 
 }

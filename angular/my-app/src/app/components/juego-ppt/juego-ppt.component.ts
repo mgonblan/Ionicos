@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegoPptComponent implements OnInit {
 
-
+  seleccionado?:boolean;//para controlar si el usuario eligió jugada o no
+readonly FOTO_PIEDRA = "assets/imagenes/rock.png";
+readonly FOTO_PAPEL = "assets/imagenes/paper.png";
+readonly FOTO_TIJERA = "assets/imagenes/scissors.png";
 //let ids_botones = ["piedra", "papel", "tijera"];
  ids_botones:Array<string>= ["piedra", "papel", "tijera"];
  img_botones :Array<string>= ["rock", "paper", "scissors"];
@@ -33,12 +36,17 @@ export class JuegoPptComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor() { 
+    this.seleccionado=false;
+  }
 
   ngOnInit(): void {
+  
   }
 
   selectPlay(play:number) {
+    console.log("Jugador selecciona su jugada");
+    this.seleccionado=true;
     localStorage.setItem("selected", play.toString());
 
     this.decorateSelectedPlay(play);
@@ -91,13 +99,17 @@ export class JuegoPptComponent implements OnInit {
       let img_computer = document.getElementById("computerPlay");
   
       if (img_computer)
-{      img_computer.setAttribute("src", `imagenes/${this.img_botones[computer]}.png`);
+{      img_computer.setAttribute("src", `assets/imagenes/${this.img_botones[computer]}.png`);
       img_computer.setAttribute("alt", this.img_botones[computer]);}
   
       console.log(result);//MOSTRANDO EL RESULTADO
       //DE FORMA IMPLÍCITA
       // 1 GANA EL JUGADOR
       // 0 ES EMPATE
+      //TODO: AÑADIR UN MARCARDOR VISUAL
+      //QUE SE ACTUALICE POR CADA PARTIDA
+      //Y MUESTREL EL RESULTADO DEL JUEGO
+      
       // -1 GANA EL PC
   
       localStorage.removeItem("selected");

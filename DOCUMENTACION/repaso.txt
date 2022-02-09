@@ -27,10 +27,48 @@ onload .- evento de la ventana que cuando se cargue, le podemos programar una ta
 
 REPASO DE ANGULAR
 
+COM De C a plantilla (html)
 binding bidireccional- directiva [(ngModel)] - FormsModule
+property binding [hidden]
+{{interpolación}}
+
 Componentes - etiqueta - trozo de página - con una funcionalidad y una apariencia
             - Los C's agrupan CSS; TS(JS); Y HTML
-Módulos -
-Directivas -
-Pipes -
-Servicios -
+Módulos - Agrupación de C's / Directivas / Funcionalidad
+Directivas - atributo o propiedad de un elemento (eitqueta) que tiene una funcionalidad
+asociada (ngIf, ngFor, routerLink, etc.)
+Pipes - Formateadores: representan la información "bonita" (fecha)
+Servicios - proveedor de datos de un C 
+npm install - descarga las dependencias descrito package.json
+Transpilación - Pasar de TypeScript a JS
+Serializar: Transformamos un objeto a texto para su almacenamiento o transmisión (lo opuesto deserializar)
+Union Types: la capacidad de TS de permitirnos declara una variable de varios tipos
+Estrcutura de un proyecto ANGULAR
+Tipos básicos
+    number, boolean, string
+    Array
+    any
+    unkown (pendiente)
+Casting
+? variable opcional (no tienes por qué inicializarla)
+enum: cuando un dato puede asumir un valor limitado de valores
+app.routuing moudle - array de rutas
+
+Comunicación entre C's
+    @ViewChild 
+
+LifeCycle Hooks (Ciclo de vida de C's)
+    constructor
+    ngOnInit - cuando se instancia
+    ngOnDestroy - cuando se deja de ver el C
+    ngAfterViewInit - cuando se carga la plantilla (onload en JS)
+
+Comandos ANGULAR Cli 
+
+    ng g c - crear Componentes
+    ng g m - crear modulos
+    ng g class - crear clases
+    ng serve - arrancar el proyecto
+    ng new - creamos el proyecto ANGULAR
+    ng g enum - creamos un tipo Enumerado
+

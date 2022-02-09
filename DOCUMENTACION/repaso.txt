@@ -24,3 +24,13 @@ this. PAALBRA reservada que dependiendo del contexto, significa una cosa:
 new .-  Palabra reservada que acompaña al nombre de la clase que queremos instanciar
 
 onload .- evento de la ventana que cuando se cargue, le podemos programar una tarea
+
+REPASO DE ANGULAR
+
+binding bidireccional- directiva [(ngModel)] - FormsModule
+Componentes - etiqueta - trozo de página - con una funcionalidad y una apariencia
+            - Los C's agrupan CSS; TS(JS); Y HTML
+Módulos -
+Directivas -
+Pipes -
+Servicios -

@@ -1,5 +1,8 @@
 export class Alumno {
 
+    //Debe existir una conconrdancia
+    //entre el atributo JSON y el atributo
+    //de la clase para que se deseriaice bien
     id: number;
     nombre: string;
     apellido: string;

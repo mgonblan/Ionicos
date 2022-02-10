@@ -33,6 +33,23 @@ export class AlumnoComponent implements OnInit {
 
   deleteUsuario(alumno:Alumno){
     console.log("borrar usuario " + alumno.id);
+    //TODO: borrar al ALUMNO del servidor
+    this.servicio_alumnos.borrarAlumno(alumno.id).subscribe(
+      //"observador"--el objeto que reciba la llamada 
+      //cuando la respuesta esté lista
+      {
+        complete: () => {console.log("ha terminado");},
+        error: (error_r) => {this.mostrarError(error_r);},
+        //error: (error_r) => {console.error('FALLLO ' +error_r);},
+        next: () =>
+        {
+          //1 recargar la página
+          //2 eliminar del array local el usuario borrado
+          this.lista_alumnos = this.lista_alumnos.filter(al=> al.id!=alumno.id);
+          console.log("alumno borrado");
+        }
+      }
+    );
   }
 
   ngOnInit(): void {

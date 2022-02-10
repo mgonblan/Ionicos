@@ -23,8 +23,8 @@ export class AlumnoService {
   //borrarAlumno
   obtenerAlumnos():Observable<Array<Alumno>>
   {
-   return this.http.get<Array<Alumno>>("http://10.1.2.10:8090/api/alumnos"); 
-   //this.http.get<Alumno[]>("http://10.1.2.10:8090/api/alumnos"); 
+   return this.http.get<Array<Alumno>>("http://10.1.2.10:8085/"); 
+   //return this.http.get<Alumno[]>("http://10.1.2.10:8090/api/alumnos"); 
   }
 
 }

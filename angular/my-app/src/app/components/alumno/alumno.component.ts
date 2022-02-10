@@ -18,6 +18,11 @@ export class AlumnoComponent implements OnInit {
     this.lista_alumnos= new Array<Alumno>();
   }
 
+  mostrarError (error:any):void
+  {
+    console.error('Ha ocurrido un error: (' + error.status + ') - ' + error.message);
+  }
+
   ngOnInit(): void {
     //aquí es el sitio para obtener datos de fuera
     //ngOnInit
@@ -26,7 +31,8 @@ export class AlumnoComponent implements OnInit {
       //cuando la respuesta esté lista
       {
         complete: () => {console.log("ha terminado");},
-        error: (error_r) => {console.error('FALLLO ' +error_r);},
+        error: (error_r) => {this.mostrarError(error_r);},
+        //error: (error_r) => {console.error('FALLLO ' +error_r);},
         next: (listado_alumnos_rx) =>
         {
           this.lista_alumnos = listado_alumnos_rx;

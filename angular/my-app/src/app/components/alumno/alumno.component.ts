@@ -6,7 +6,7 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 @Component({
   selector: 'app-alumno',
   templateUrl: './alumno.component.html',
-  styleUrls: ['./alumno.component.css']
+  styleUrls: ['./alumno.component.css'],
 })
 export class AlumnoComponent implements OnInit {
 //esta clase usa el AlumnoService
@@ -30,7 +30,15 @@ export class AlumnoComponent implements OnInit {
     console.log(`TIPO ${http_response.headers.get('content-type')}`);
     
   }
-
+  add(name: string,surname: string, edad: number, email:string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.servicio_alumnos.addAlumno({nombre:name, apellido:surname, edad, email} as Alumno)
+      .subscribe(alumno => {
+        this.lista_alumnos.push(alumno);
+      });
+      
+  }
   deleteUsuario(alumno:Alumno){
     console.log("borrar usuario " + alumno.id);
     //TODO: borrar al ALUMNO del servidor
@@ -68,7 +76,6 @@ export class AlumnoComponent implements OnInit {
         }
       }
     );
-
     this.servicio_alumnos.obtenerAlumnosConCabeceras().subscribe(
       //"observador"--el objeto que reciba la llamada 
       //cuando la respuesta esté lista

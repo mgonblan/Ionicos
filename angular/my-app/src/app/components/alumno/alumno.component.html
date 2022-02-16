@@ -1,5 +1,23 @@
 <h1 class="text-center">Lista de alumnos</h1>
+<button class="btn btn-danger" (click)="triggerModal(modalData)">Open Modal</button>
 
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Angular Bootstrap Modal Popup</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete <span class="text-primary">{{alumno.alumno}}</span> profile?</strong></p>
+    
+    <p>All data related to west view profile will be removed permanently.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
 <div class='listaAlumnos'>
     <div class="card" *ngFor="let alumno of lista_alumnos">
         <!--<img class="card-img-top" src="..." alt="Card image cap">-->
@@ -8,9 +26,10 @@
           <h5 class="card-title">{{alumno.id}}. {{alumno.nombre}} {{alumno.apellido}}</h5>
         </div>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button (click)="deleteUsuario(alumno)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">Delete</i></button>
-          <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i>Add</button>
-        </div>
+          <button (click)="deleteUsuario(alumno)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><fa-icon [icon]="faTrash"></fa-icon>Delete</button>
+          <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><fa-icon [icon]="faCoffee"></fa-icon>Add</button>
+          <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="edit"><fa-icon [icon]="faUserEdit"></fa-icon>Edit</button> 
+        </div> 
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Email: {{alumno.email}}</li>
           <li class="list-group-item">Edad: {{alumno.edad}}</li>

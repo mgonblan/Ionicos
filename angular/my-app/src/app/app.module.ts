@@ -11,7 +11,8 @@ import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
 import { MarcadorComponent } from './components/marcador/marcador.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { FormAlumnoComponentComponent } from './form-alumno-component/form-alumno-component.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //ng g c components/dni
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { FormAlumnoComponentComponent } from './form-alumno-component/form-alumn
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

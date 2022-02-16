@@ -2,7 +2,7 @@ import { HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from 'src/app/services/alumno.service';
-
+import { faPlus, faTrash, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-alumno',
   templateUrl: './alumno.component.html',
@@ -11,9 +11,10 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 export class AlumnoComponent implements OnInit {
 //esta clase usa el AlumnoService
 //para obtener datos
-
+faCoffee = faPlus;
+faTrash = faTrash;
+faUserEdit= faUserEdit;
 //INYECCIÓN de dependencias
-
   lista_alumnos:Array<Alumno>;
   constructor(public servicio_alumnos:AlumnoService) { 
     this.lista_alumnos= new Array<Alumno>();
@@ -39,6 +40,7 @@ export class AlumnoComponent implements OnInit {
       });
       
   }
+
   deleteUsuario(alumno:Alumno){
     console.log("borrar usuario " + alumno.id);
     //TODO: borrar al ALUMNO del servidor
@@ -53,7 +55,9 @@ export class AlumnoComponent implements OnInit {
         {
           //1 recargar la página
           //2 eliminar del array local el usuario borrado
+          
           this.lista_alumnos = this.lista_alumnos.filter(al=> al.id!=alumno.id);
+          window.alert("alumno borrado");
           console.log("alumno borrado");
         }
       }

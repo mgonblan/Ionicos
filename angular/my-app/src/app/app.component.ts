@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'my-app';
   //"NUESTRO JAVASCRIPT"
+
 
   constructor() {
     console.log("en el constructor de AppComponent");
